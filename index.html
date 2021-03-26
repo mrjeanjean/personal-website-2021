@@ -10,47 +10,90 @@
     <title>mOveo - site web v2021</title>
 </head>
 <body>
-<div class="slider">
-    <section>
-        <h1 class="slider__title">Intégrateur <small>Développeur front-end senior css et javascript</small></h1>
-        <div class="slider-content">
-            <div class="slider__item">
-                <h2 class="slider__subtitle">CSS // SCSS</h2>
-                <div class="slider-content__text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad ducimus et inventore maxime nam, natus
-                    qui ratione recusandae repellat saepe. Alias eos mollitia nam neque nobis quaerat quas sit voluptas?
+<div class="sliders">
+    <!-- SLIDER FRONT-END -->
+    <section class="slider slider--pink">
+        <div class="slider__inner">
+            <h1 class="slider__title">Intégrateur <small>Développeur front-end senior css et javascript</small></h1>
+            <div class="slider-content">
+                <div class="slider__item">
+                    <h2 class="slider__subtitle">CSS // SCSS</h2>
+                    <div class="slider-content__text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad ducimus et inventore maxime nam,
+                        natus
+                        qui ratione recusandae repellat saepe. Alias eos mollitia nam neque nobis quaerat quas sit
+                        voluptas?
+                    </div>
                 </div>
-            </div>
-            <div class="slider__item">
-                <h2 class="slider__subtitle">React JS</h2>
-                <div class="slider-content__text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad ducimus et inventore maxime nam, natus
-                    qui nventore maxime nam, natus qui ratione recusandae repellat saepe. Alias eos mollitia nam neque
-                    nobis quaerat quas sit voluptas?
-                    Alias eos mollitia nam neque nobis quaerat quas sit voluptas?
-                    <span class="slider-content__icon"><img src="images/logo-react.svg" alt="React JS"></span>
+                <div class="slider__item">
+                    <h2 class="slider__subtitle">React JS</h2>
+                    <div class="slider-content__text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad ducimus et inventore maxime nam,
+                        natus
+                        qui nventore maxime nam, natus qui ratione recusandae repellat saepe. Alias eos mollitia nam
+                        neque
+                        nobis quaerat quas sit voluptas?
+                        Alias eos mollitia nam neque nobis quaerat quas sit voluptas?
+                    </div>
                 </div>
-            </div>
-            <div class="slider__item">
-                <h2 class="slider__subtitle">Vanilla JS</h2>
-                <div class="slider-content__text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad ducimus et inventore maxime nam, natus
-                    qui ratione recusandae repellat saepe. Alias eos mollitia nam neque nobis quaerat quas sit voluptas?
+                <div class="slider__item">
+                    <h2 class="slider__subtitle">Vanilla javascript</h2>
+                    <div class="slider-content__text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad ducimus et inventore maxime nam,
+                        natus
+                        qui ratione recusandae repellat saepe. Alias eos mollitia nam neque nobis quaerat quas sit
+                        voluptas?
+                    </div>
                 </div>
-            </div>
-            <div class="slider__item">
-                <h2 class="slider__subtitle">Vue JS</h2>
-                <div class="slider-content__text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad ducimus et inventore maxime nam, natus
-                    qui nventore maxime nam, natus qui ratione recusandae repellat saepe. Alias eos mollitia nam neque
-                    nobis quaerat quas sit voluptas?
-                    Alias eos mollitia nam neque nobis quaerat quas sit voluptas?
+                <div class="slider__item">
+                    <h2 class="slider__subtitle">Vue JS</h2>
+                    <div class="slider-content__text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad ducimus et inventore maxime nam,
+                        natus
+                        qui nventore maxime nam, natus qui ratione recusandae repellat saepe. Alias eos mollitia nam
+                        neque
+                        nobis quaerat quas sit voluptas?
+                        Alias eos mollitia nam neque nobis quaerat quas sit voluptas?
+                    </div>
                 </div>
             </div>
         </div>
-
-        <button type="button" class="slider__see-works"><span>+</span></button>
+        <div class="slider__works__wrapper" data-works-id="0">
+            <div class="slider__works">
+                <div class="slider__works__inner">
+                    <h3 class="slider-works__title">Références</h3>
+                    <ul class="slider-works__list">
+                        <li class="slider-works__item">
+                            <p class="slider-works-item__title">Six Design</p>
+                            <p class="slider-works-item__content">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                elit.
+                                Alias asperiores aspernatur deleniti.</p>
+                        </li>
+                        <li class="slider-works__item">
+                            <p class="slider-works-item__title">Boostravel</p>
+                            <p class="slider-works-item__content">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                elit.
+                                Alias asperiores aspernatur deleniti.</p>
+                        </li>
+                        <li class="slider-works__item">
+                            <p class="slider-works-item__title">Château Arbo</p>
+                            <p class="slider-works-item__content">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                elit.
+                                Alias asperiores aspernatur deleniti.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <button type="button" class="slider-works__button js-see-works-button" data-works-button="0">
+                <img src="images/icon-close.svg" alt="">
+            </button>
+            <div class="slider-works__overlay"></div>
+        </div>
     </section>
+    <!-- #SLIDER FRONT-END -->
+
+    <!-- SLIDER BACK-END -->
+    <!-- #SLIDER BACK-END -->
 </div>
 <script type="module" src="/scripts/main.js"></script>
 </body>

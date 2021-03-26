@@ -3,6 +3,7 @@
 $color-black: #141414;
 $color-theme-yellow: #FFE600;
 $color-theme-green: #4AFF70;
+$color-theme-blue: #00FFFF;
 $color-theme-pink: #FF5E8F;
 
 // FONTS
@@ -16,3 +17,10 @@ $font-light: 300;
 $font-regular: 400;
 $font-semi-bold: 600;
 $font-bold: 700;
+
+// ANIMATIONS
+//-----------------------------
+$ease-bounce: cubic-bezier(0.19, 1, 0.22, 1);
+$ease-elastic: cubic-bezier(0.3, -1, 0.7, 2);
+$ease-in-quart: cubic-bezier(0.165, 0.840, 0.440, 1.000);
+$ease-out-quart: cubic-bezier( 0.895,  0.030,  0.685,  0.220 );

@@ -7,14 +7,22 @@
   font-weight: $font-light;
 }
 
-.slider{
-  height: 100vh;
-  display: flex;
-  align-items: center;
+%slider{
   padding: 4rem 8rem 4rem 8rem;
-  background-color: $color-theme-pink;
+}
+
+// SLIDERS
+//-----------------------------
+.sliders{
+}
+
+.slider{
+  @extend %slider;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  height: 100vh;
 }
 
 .slider__title{
@@ -35,6 +43,12 @@
   left: 0;
   color: $color-black;
   transform: translate(2.5rem, -0.8rem);
+  letter-spacing: 1px;
+}
+
+.slider__item{
+  position: relative;
+  z-index: 1;
 }
 
 .slider-content{
@@ -42,7 +56,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 4rem;
-  grid-row-gap: 2rem;
+  grid-row-gap: 3rem;
 }
 
 .slider__subtitle{
@@ -51,35 +65,163 @@
   @include font-size(18);
   font-weight: $font-semi-bold;
   margin-bottom: 0.25rem;
+  display: flex;
+  align-items: flex-end;
+  letter-spacing: 1px;
 }
 
-// SLIDER WORKS LINK
+.slider-tech__icon{
+  width: 25px;
+  margin-right: 0.6rem;
+  display: none;
+}
+
+// SLIDER WORKS
 //-----------------------------
-.slider__see-works{
+$work-button-radius: 20rem;
+
+.slider-works__button{
   position: absolute;
+  z-index: 40;
   top: 0;
   right: 0;
   padding: 0;
   border: none;
-  width: 20rem;
-  height: 20rem;
-  background-color: #fff;
+  width: $work-button-radius / 2.5;
+  height: $work-button-radius / 2.5;
   border-radius: 50%;
+  background-color: transparent;
+  @include font-size(80);
+  color: $color-black;
+  font-weight: $font-semi-bold;
+  //transform: translate(40%, -40%);
+  font-family: $font-title;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.slider-works__button img{
+  display: block;
+  transition: transform 600ms $ease-bounce;
+  width: 40px;
+  height: auto;
+  //transform: translate(-2rem, 2rem);
+}
+
+.slider-works__overlay{
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 8;
+  width: $work-button-radius;
+  padding-bottom: $work-button-radius;
+  border-radius: 50%;
+  background-color: #ffffff;
   @include font-size(80);
   color: $color-black;
   font-weight: $font-semi-bold;
   transform: translate(40%, -40%);
+  /*transition: transform 1000ms $ease-in-quart;
+  transform-origin: calc(100% - $work-button-radius) calc(100% - $work-button-radius);*/
+  transition: width 700ms $ease-in-quart, padding-bottom 700ms $ease-in-quart;
 }
 
-
-.slider__see-works span{
-  display: block;
-  transform: translate(-2rem, 2rem);
-}
-
-.slider-content__icon{
+.slider__works{
   position: absolute;
-  z-index: -1;
   top: 0;
-  left: 0;
+  right: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: 10;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+
+  @extend %slider;
+  padding-left: 2rem;
+  transition: opacity 200ms 1s;
+  transition-delay: 0s;
+}
+
+.slider__works__wrapper.active .slider__works{
+  opacity: 1;
+  transition-delay: 0.10s;
+}
+
+.slider__works__wrapper.active .slider-works__overlay{
+  width: 120%;
+  padding-bottom: 120%;
+}
+
+.slider__works__wrapper.active .slider-works__button img{
+  transform: rotate(135deg);
+}
+
+.slider-works__title{
+  text-transform: uppercase;
+  font-weight: $font-semi-bold;
+  letter-spacing: 1px;
+  @include font-size(18);
+  font-family: $font-title;
+  margin-bottom: 4rem;
+}
+
+.slider-works__list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slider-works__item + .slider-works__item{
+  margin-top: 3rem;
+}
+
+.slider-works-item__title{
+  @include font-size(30);
+  font-family: $font-title;
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: $font-semi-bold;
+}
+
+.slider-works-item__content{
+  margin-top: 0;
+  line-height: 1.8;
+}
+
+// SLIDER COLORS
+//-----------------------------
+.slider--pink{
+  background-color: $color-theme-pink;
+}
+
+.slider--green{
+  background-color: $color-theme-green;
+}
+
+.slider--yellow{
+  background-color: $color-theme-yellow;
+}
+
+.slider--blue{
+  background-color: $color-theme-blue;
+}
+
+.slider--pink .slider-works-item__title{
+  color: $color-theme-pink;
+}
+
+.slider--green .slider-works-item__title{
+  color: $color-theme-green;
+}
+
+.slider--yellow .slider-works-item__title{
+  color: $color-theme-yellow;
+}
+
+.slider--blue .slider-works-item__title{
+  color: $color-theme-blue;
 }
