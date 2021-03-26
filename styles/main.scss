@@ -1,0 +1,20 @@
+@use "./reset";
+@use "./variables" as *;
+@use "./abstracts/mixins" as *;
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  @include root-size();
+}
+
+body{
+  @include font-size(18);
+  font-family: $font-text;
+}
+
+@import "pages/sliders";

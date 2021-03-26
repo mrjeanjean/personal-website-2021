@@ -1,0 +1,45 @@
+@use './../variables' as *;
+
+// RESPONSIVE FONT
+//-----------------------------
+$root-sizes: (
+        "normal": $default-font-size,
+        "medium": 16,
+        "small": 14,
+) !default;
+
+@mixin root-size($size: "normal") {
+  font-size: map-get($root-sizes, $size) / 16 * 100%;
+}
+
+@mixin font-size($fontsize) {
+  font-size: #{$fontsize / $default-font-size}rem;
+}
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+// RESPONSIVE
+//-----------------------------
+@function calc-rem($pix) {
+  $pix: strip-unit($pix);
+  @return #{$pix / $default-font-size}rem;
+}
+
+@mixin up($size) {
+  $size: strip-unit($size);
+  @media (min-width: $size * 1px) { @content; }
+}
+@mixin down($size) {
+  $size: strip-unit($size);
+  @media (max-width: $size * 1px) { @content; }
+}
+@mixin between($down, $up) {
+  $down: strip-unit($down);
+  $up: strip-unit($up);
+  @media (min-width: $down * 1px) and (max-width: $up * 1px) { @content; }
+}

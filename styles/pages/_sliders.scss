@@ -1,0 +1,85 @@
+@use "./../variables" as *;
+@use "./../abstracts/mixins" as *;
+
+%title{
+  font-family: $font-title;
+  @include font-size(120);
+  font-weight: $font-light;
+}
+
+.slider{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 4rem 8rem 4rem 8rem;
+  background-color: $color-theme-pink;
+  position: relative;
+  overflow: hidden;
+}
+
+.slider__title{
+  @extend %title;
+  color: #ffffff;
+  margin-top: -4rem;
+  margin-bottom: 4rem;
+  position: relative;
+  margin-left: -2.5rem;
+}
+
+.slider__title small{
+  position: absolute;
+  top: 100%;
+  text-transform: uppercase;
+  @include font-size(18);
+  font-weight: $font-semi-bold;
+  left: 0;
+  color: $color-black;
+  transform: translate(2.5rem, -0.8rem);
+}
+
+.slider-content{
+  line-height: 1.8;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 4rem;
+  grid-row-gap: 2rem;
+}
+
+.slider__subtitle{
+  font-family: $font-title;
+  text-transform: uppercase;
+  @include font-size(18);
+  font-weight: $font-semi-bold;
+  margin-bottom: 0.25rem;
+}
+
+// SLIDER WORKS LINK
+//-----------------------------
+.slider__see-works{
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0;
+  border: none;
+  width: 20rem;
+  height: 20rem;
+  background-color: #fff;
+  border-radius: 50%;
+  @include font-size(80);
+  color: $color-black;
+  font-weight: $font-semi-bold;
+  transform: translate(40%, -40%);
+}
+
+
+.slider__see-works span{
+  display: block;
+  transform: translate(-2rem, 2rem);
+}
+
+.slider-content__icon{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
