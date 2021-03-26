@@ -43,3 +43,11 @@ $root-sizes: (
   $up: strip-unit($up);
   @media (min-width: $down * 1px) and (max-width: $up * 1px) { @content; }
 }
+
+// HELPERS
+//-----------------------------
+@mixin on-hover() {
+  @media (hover: hover) {
+      @content;
+  }
+}

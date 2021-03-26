@@ -87,20 +87,19 @@ $work-button-radius: 20rem;
   right: 0;
   padding: 0;
   border: none;
-  width: $work-button-radius / 2.5;
-  height: $work-button-radius / 2.5;
+  width: $work-button-radius;
+  height: $work-button-radius;
   border-radius: 50%;
+  transform: translate(40%, -40%);
   background-color: transparent;
   @include font-size(80);
   color: $color-black;
   font-weight: $font-semi-bold;
-  //transform: translate(40%, -40%);
   font-family: $font-title;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 1;
 }
 
 .slider-works__button img{
@@ -108,7 +107,8 @@ $work-button-radius: 20rem;
   transition: transform 600ms $ease-bounce;
   width: 40px;
   height: auto;
-  //transform: translate(-2rem, 2rem);
+  margin-left: -20%;
+  margin-top: 20%;
 }
 
 .slider-works__overlay{
@@ -124,8 +124,6 @@ $work-button-radius: 20rem;
   color: $color-black;
   font-weight: $font-semi-bold;
   transform: translate(40%, -40%);
-  /*transition: transform 1000ms $ease-in-quart;
-  transform-origin: calc(100% - $work-button-radius) calc(100% - $work-button-radius);*/
   transition: width 700ms $ease-in-quart, padding-bottom 700ms $ease-in-quart;
 }
 
@@ -185,6 +183,17 @@ $work-button-radius: 20rem;
   text-transform: uppercase;
   margin: 0;
   font-weight: $font-semi-bold;
+}
+
+.slider-works-item__title a{
+  text-decoration: none;
+  transition: color 200ms $ease-in-quart;
+}
+
+@include on-hover(){
+  .slider-works-item__title a:hover{
+    color: $color-black;
+  }
 }
 
 .slider-works-item__content{
