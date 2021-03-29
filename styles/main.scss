@@ -17,4 +17,7 @@ body{
   font-family: $font-text;
 }
 
-@import "./pages/sliders";
+@import "./slides/slide";
+@import "./slides/slide-works";
+@import "./slides/slide-colors";
+@import "./slides/slide-animations";

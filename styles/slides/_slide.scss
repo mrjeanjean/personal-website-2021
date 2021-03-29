@@ -1,0 +1,74 @@
+@use "./../variables" as *;
+@use "./../abstracts/mixins" as *;
+
+%title{
+  font-family: $font-title;
+  @include font-size(120);
+  font-weight: $font-light;
+}
+
+%slide{
+  padding: 4rem 8rem 4rem 8rem;
+}
+
+// SLIDES
+//-----------------------------
+.slide{
+  @extend %slide;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.slide__title{
+  @extend %title;
+  color: #ffffff;
+  margin-top: -4rem;
+  margin-bottom: 4rem;
+  position: relative;
+  margin-left: -2.5rem;
+}
+
+.slide__title small{
+  position: absolute;
+  top: 100%;
+  text-transform: uppercase;
+  @include font-size(18);
+  font-weight: $font-semi-bold;
+  left: 0;
+  color: $color-black;
+  transform: translate(2.5rem, -0.8rem);
+  letter-spacing: 1px;
+}
+
+.slide__item{
+  position: relative;
+  z-index: 1;
+}
+
+.slide__content{
+  line-height: 1.8;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 4rem;
+  grid-row-gap: 3rem;
+}
+
+.slide__subtitle{
+  font-family: $font-title;
+  text-transform: uppercase;
+  @include font-size(18);
+  font-weight: $font-semi-bold;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: flex-end;
+  letter-spacing: 1px;
+}
+
+.slide-tech__icon{
+  width: 25px;
+  margin-right: 0.6rem;
+  display: none;
+}

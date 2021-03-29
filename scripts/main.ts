@@ -21,4 +21,15 @@ if ($slidersContainer) {
     const pageSlider = new PageSlider($slidersContainer, {
         multiplier: 1
     });
+
+    document.addEventListener('keydown', (e)=>{
+        console.log(e.key)
+        if(e.key === 'ArrowLeft'){
+            pageSlider.goToSlide(2);
+        }
+
+        if(e.key === 'ArrowRight'){
+            console.log(pageSlider.data);
+        }
+    });
 }

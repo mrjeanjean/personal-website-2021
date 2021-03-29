@@ -1,0 +1,40 @@
+// SLIDES ANIMATIONS
+//-----------------------------
+.slide__title{
+  opacity: 0;
+  transform: translateY(-60px);
+  transition: opacity 300ms, transform 800ms $ease-in-quart;
+}
+
+.slide.active .slide__title{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide__title small{
+  opacity: 0;
+  margin-left: 60px;
+  transition: opacity 300ms 350ms, margin-left 1000ms $ease-in-quart 350ms, letter-spacing 3000ms 600ms;
+}
+
+.slide.active .slide__title small{
+  margin-left: 0;
+  opacity: 1;
+}
+
+.slide__content > *{
+  opacity: 0;
+  transition: opacity 1000ms 300ms;
+}
+
+.slide.active .slide__content > *{
+  opacity: 1;
+}
+
+@for $i from 1 through 5 {
+  .slide .slide__content > *:nth-child(#{$i}) {
+    transition-delay: $i * 0.2s;
+  }
+}
+
+
