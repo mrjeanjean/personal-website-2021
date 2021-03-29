@@ -7,17 +7,14 @@
   font-weight: $font-light;
 }
 
-%slider{
+%slide{
   padding: 4rem 8rem 4rem 8rem;
 }
 
 // SLIDERS
 //-----------------------------
-.sliders{
-}
-
-.slider{
-  @extend %slider;
+.slide{
+  @extend %slide;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -25,7 +22,7 @@
   height: 100vh;
 }
 
-.slider__title{
+.slide__title{
   @extend %title;
   color: #ffffff;
   margin-top: -4rem;
@@ -34,7 +31,7 @@
   margin-left: -2.5rem;
 }
 
-.slider__title small{
+.slide__title small{
   position: absolute;
   top: 100%;
   text-transform: uppercase;
@@ -46,12 +43,12 @@
   letter-spacing: 1px;
 }
 
-.slider__item{
+.slide__item{
   position: relative;
   z-index: 1;
 }
 
-.slider-content{
+.slide-content{
   line-height: 1.8;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -59,7 +56,7 @@
   grid-row-gap: 3rem;
 }
 
-.slider__subtitle{
+.slide__subtitle{
   font-family: $font-title;
   text-transform: uppercase;
   @include font-size(18);
@@ -70,7 +67,7 @@
   letter-spacing: 1px;
 }
 
-.slider-tech__icon{
+.slide-tech__icon{
   width: 25px;
   margin-right: 0.6rem;
   display: none;
@@ -80,7 +77,7 @@
 //-----------------------------
 $work-button-radius: 20rem;
 
-.slider-works__button{
+.slide-works__button{
   position: absolute;
   z-index: 40;
   top: 0;
@@ -102,7 +99,7 @@ $work-button-radius: 20rem;
   justify-content: center;
 }
 
-.slider-works__button img{
+.slide-works__button img{
   display: block;
   transition: transform 600ms $ease-bounce;
   width: 40px;
@@ -111,7 +108,7 @@ $work-button-radius: 20rem;
   margin-top: 20%;
 }
 
-.slider-works__overlay{
+.slide-works__overlay{
   position: absolute;
   top: 0;
   right: 0;
@@ -127,7 +124,7 @@ $work-button-radius: 20rem;
   transition: width 700ms $ease-in-quart, padding-bottom 700ms $ease-in-quart;
 }
 
-.slider__works{
+.slide__works{
   position: absolute;
   top: 0;
   right: 0;
@@ -138,27 +135,27 @@ $work-button-radius: 20rem;
   display: flex;
   align-items: center;
 
-  @extend %slider;
+  @extend %slide;
   padding-left: 2rem;
   transition: opacity 200ms 1s;
   transition-delay: 0s;
 }
 
-.slider__works__wrapper.active .slider__works{
+.slide__works__wrapper.active .slide__works{
   opacity: 1;
   transition-delay: 0.10s;
 }
 
-.slider__works__wrapper.active .slider-works__overlay{
+.slide__works__wrapper.active .slide-works__overlay{
   width: 120%;
   padding-bottom: 120%;
 }
 
-.slider__works__wrapper.active .slider-works__button img{
+.slide__works__wrapper.active .slide-works__button img{
   transform: rotate(135deg);
 }
 
-.slider-works__title{
+.slide-works__title{
   text-transform: uppercase;
   font-weight: $font-semi-bold;
   letter-spacing: 1px;
@@ -167,17 +164,17 @@ $work-button-radius: 20rem;
   margin-bottom: 4rem;
 }
 
-.slider-works__list{
+.slide-works__list{
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.slider-works__item + .slider-works__item{
+.slide-works__item + .slide-works__item{
   margin-top: 3rem;
 }
 
-.slider-works-item__title{
+.slide-works-item__title{
   @include font-size(30);
   font-family: $font-title;
   text-transform: uppercase;
@@ -185,52 +182,52 @@ $work-button-radius: 20rem;
   font-weight: $font-semi-bold;
 }
 
-.slider-works-item__title a{
+.slide-works-item__title a{
   text-decoration: none;
   transition: color 200ms $ease-in-quart;
 }
 
 @include on-hover(){
-  .slider-works-item__title a:hover{
+  .slide-works-item__title a:hover{
     color: $color-black;
   }
 }
 
-.slider-works-item__content{
+.slide-works-item__content{
   margin-top: 0;
   line-height: 1.8;
 }
 
 // SLIDER COLORS
 //-----------------------------
-.slider--pink{
+.slide--pink{
   background-color: $color-theme-pink;
 }
 
-.slider--green{
+.slide--green{
   background-color: $color-theme-green;
 }
 
-.slider--yellow{
+.slide--yellow{
   background-color: $color-theme-yellow;
 }
 
-.slider--blue{
+.slide--blue{
   background-color: $color-theme-blue;
 }
 
-.slider--pink .slider-works-item__title{
+.slide--pink .slide-works-item__title{
   color: $color-theme-pink;
 }
 
-.slider--green .slider-works-item__title{
+.slide--green .slide-works-item__title{
   color: $color-theme-green;
 }
 
-.slider--yellow .slider-works-item__title{
+.slide--yellow .slide-works-item__title{
   color: $color-theme-yellow;
 }
 
-.slider--blue .slider-works-item__title{
+.slide--blue .slide-works-item__title{
   color: $color-theme-blue;
 }
