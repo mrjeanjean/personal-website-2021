@@ -13,7 +13,27 @@ $root-sizes: (
 }
 
 @mixin font-size($fontsize) {
-  font-size: #{$fontsize / $default-font-size}rem;
+  // NICE FOR FONT SIZE 18 : #{$fontsize * 0.85 / $default-font-size}rem, 1.1vw, #{$fontsize / $default-font-size}rem
+  $raw_size: strip-unit($fontsize);
+  font-size: clamp(
+          #{$fontsize * 0.85 / $default-font-size}rem, #{(1.1vw / 18 * $raw_size)}, #{$fontsize / $default-font-size}rem
+  );
+}
+
+$min-font-size: 14;
+
+@mixin font-size-clamped($fontsize){
+  $min_size: $fontsize * 0.5;
+
+  @if $min_size < $min-font-size {
+    $min_size: $min-font-size;
+  }
+
+  font-size: clamp(
+          #{$min_size / $default-font-size}rem,
+          #{(1.1vw / 18 * $fontsize)},
+          #{$fontsize / $default-font-size}rem
+  )
 }
 
 @function strip-unit($number) {

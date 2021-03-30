@@ -13,7 +13,7 @@ html {
 }
 
 body{
-  @include font-size(18);
+  @include font-size-clamped(18);
   font-family: $font-text;
 }
 

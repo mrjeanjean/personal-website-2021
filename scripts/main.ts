@@ -23,7 +23,6 @@ if ($slidersContainer) {
     });
 
     document.addEventListener('keydown', (e)=>{
-        console.log(e.key)
         if(e.key === 'ArrowLeft'){
             pageSlider.goToSlide(2);
         }

@@ -119,7 +119,7 @@ class PageSlider {
             autoCenter();
         }, this.options.scrollThrottle));
 
-        window.addEventListener("resize", debounce(this.redrawSlider, 200));
+        window.addEventListener("resize", throttle(this.redrawSlider, 200));
     }
 
     /**
@@ -136,30 +136,6 @@ class PageSlider {
         this.data = {
             ...this.data,
             leftIndent
-        }
-    }
-
-    private redrawSlider(): void {
-        this.draw();
-    }
-
-    /**
-     * Center slider to the nearest slide
-     * @return {Function}
-     */
-    private autoCenter(): Function {
-        let waitDebounceTimeout = null;
-
-        return () => {
-            if (!this.options.autoCenter) {
-                return;
-            }
-            clearTimeout(waitDebounceTimeout);
-            waitDebounceTimeout = setTimeout(() => {
-                if (this.data.distanceToNextSlide < 0.45) {
-                    this.goToSlide(this.data.currentIndex);
-                }
-            }, this.options.autoCenterDelay);
         }
     }
 
@@ -181,6 +157,30 @@ class PageSlider {
         }
     }
 
+    /**
+     * Center slider to the nearest slide
+     * @return {Function} - Callback as closure
+     */
+    private autoCenter(): Function {
+        let waitDebounceTimeout = null;
+
+        return () => {
+            if (!this.options.autoCenter) {
+                return;
+            }
+            clearTimeout(waitDebounceTimeout);
+            waitDebounceTimeout = setTimeout(() => {
+                if (this.data.distanceToNextSlide < 0.45) {
+                    this.goToSlide(this.data.currentIndex);
+                }
+            }, this.options.autoCenterDelay);
+        }
+    }
+
+    /**
+     * Add css class on currently revealed slide
+     * @return {Function} - Callback as closure
+     */
     private updateSlideClasses(): Function {
         let currentSlide: HTMLElement = null;
         return () => {
@@ -191,6 +191,9 @@ class PageSlider {
         }
     }
 
+    private redrawSlider(): void {
+        this.draw();
+    }
 
     private getDefaultOptions(options: object): PageSliderOptions {
         options = options || {};
