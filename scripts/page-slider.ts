@@ -14,6 +14,15 @@ interface PageSliderOptions {
     autoCenterDelay?: number
 }
 
+
+/**
+ * Representing current Page Slider state
+ * @property {number} leftIndent - Left indent value of slide wrapper
+ * @property {number} currentSlide
+ * @property {boolean} currentIndex - Current slide index
+ * @property {boolean} nbSlides
+ * @property {boolean} distanceToNextSlide
+ */
 interface PageSliderData {
     leftIndent: number,
     currentSlide: HTMLElement,
@@ -23,7 +32,7 @@ interface PageSliderData {
 }
 
 /**
- *
+ * Class used for horizontal scrolling effect
  */
 class PageSlider {
     $slidesContainer: HTMLElement;
@@ -61,6 +70,7 @@ class PageSlider {
 
         this.draw();
         this.attachEvents();
+        this.onScroll();
     }
 
     /**
@@ -78,6 +88,26 @@ class PageSlider {
             top: nextScrollPosition,
             behavior: "smooth"
         });
+    }
+
+    /**
+     * Move slider to the next slide
+     */
+    public next(){
+        const nextIndex = this.data.currentIndex + 1;
+        if( nextIndex < this.slides.length){
+            this.goToSlide(nextIndex);
+        }
+    }
+
+    /**
+     * Move slider to the previous slide
+     */
+    public previous(){
+        const prevIndex = this.data.currentIndex - 1;
+        if( prevIndex >= 0){
+            this.goToSlide(prevIndex);
+        }
     }
 
     public clear(): void {

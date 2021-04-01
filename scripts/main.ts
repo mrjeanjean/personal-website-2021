@@ -24,11 +24,11 @@ if ($slidersContainer) {
 
     document.addEventListener('keydown', (e)=>{
         if(e.key === 'ArrowLeft'){
-            pageSlider.goToSlide(2);
+            pageSlider.previous();
         }
 
         if(e.key === 'ArrowRight'){
-            console.log(pageSlider.data);
+            pageSlider.next();
         }
     });
 }
