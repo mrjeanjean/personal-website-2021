@@ -1,13 +1,24 @@
 /**
  * Wrap first element with the second one
- * @param {HTMLElement} el
+ * @param {HTMLElement} $el
  * @param {HTMLElement} wrapper
  * @return HTMLElement
  */
-export function wrapElement(el:HTMLElement, wrapper:HTMLElement):HTMLElement{
-    el.parentNode.insertBefore(wrapper, el);
-    wrapper.appendChild(el);
+export function wrapElement($el:HTMLElement, wrapper:HTMLElement):HTMLElement{
+    $el.parentNode.insertBefore(wrapper, $el);
+    wrapper.appendChild($el);
     return wrapper;
+}
+
+/**
+ * Unwrap HTML element
+ * @param {HTMLElement} $el
+ * @return HTMLElement
+ */
+export function unwrapElement($el:HTMLElement):void{
+    const $parent = $el.parentNode;
+    while ($el.firstChild) $parent.insertBefore($el.firstChild, $el);
+    $parent.removeChild($el);
 }
 
 /**

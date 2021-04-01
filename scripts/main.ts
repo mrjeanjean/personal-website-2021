@@ -18,7 +18,7 @@ worksPanels.forEach($workPanel => {
 //-----------------------------
 const $slidersContainer = document.querySelector(".js-page-slider") as HTMLElement;
 if ($slidersContainer) {
-    const pageSlider = new PageSlider($slidersContainer, {
+    let pageSlider = new PageSlider($slidersContainer, {
         multiplier: 1
     });
 

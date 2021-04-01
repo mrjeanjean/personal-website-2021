@@ -1,4 +1,4 @@
-import {debounce, throttle, wrapElement} from "./helpers";
+import {debounce, throttle, unwrapElement, wrapElement} from "./helpers";
 
 /**
  * Page slider options
@@ -8,10 +8,10 @@ import {debounce, throttle, wrapElement} from "./helpers";
  * @property {boolean} autoCenterDelay - How long wait before autoCenter slide
  */
 interface PageSliderOptions {
-    multiplier: number,
-    scrollThrottle: number,
-    autoCenter: boolean,
-    autoCenterDelay: number
+    multiplier?: number,
+    scrollThrottle?: number,
+    autoCenter?: boolean,
+    autoCenterDelay?: number
 }
 
 interface PageSliderData {
@@ -22,12 +22,18 @@ interface PageSliderData {
     distanceToNextSlide: number
 }
 
+/**
+ *
+ */
 class PageSlider {
     $slidesContainer: HTMLElement;
     $pageSliderWrapper: HTMLElement;
-    slides: NodeList;
+    slides: NodeListOf<HTMLElement>;
     options: PageSliderOptions;
     data: PageSliderData;
+
+    onScrollFallback: any;
+    onResizeFallback: any;
 
     /**
      * @constructor
@@ -40,6 +46,10 @@ class PageSlider {
         this.$slidesContainer = slideContainer;
         this.$pageSliderWrapper = this.generateWrapper();
         this.slides = this.$slidesContainer.querySelectorAll(".slide");
+
+        this.onScroll = this.onScroll.bind(this);
+        this.moveSlider = this.moveSlider.bind(this);
+        this.draw = this.draw.bind(this);
 
         this.data = {
             leftIndent: 0,
@@ -70,6 +80,22 @@ class PageSlider {
         });
     }
 
+    public clear(): void {
+        window.removeEventListener("scroll", this.onScrollFallback);
+        window.removeEventListener("resize", this.onResizeFallback);
+
+        // Remove slide container css rules
+        this.$slidesContainer.style.display = null;
+        this.$slidesContainer.style.width = null;
+
+        // Remove body css rules
+        document.body.style.overflowX = null;
+        document.body.style.height = null;
+
+        unwrapElement(this.$pageSliderWrapper);
+        this.slides.forEach($slide => $slide.classList.add("active"));
+    }
+
     /**
      * @return {HTMLElement}
      */
@@ -95,8 +121,8 @@ class PageSlider {
         const windowHeight = window.innerHeight;
 
         document.body.style.overflowX = 'hidden';
-
         document.body.style.height = `${this.slides.length * this.options.multiplier * windowHeight}px`;
+
         this.$slidesContainer.style.display = 'flex';
         this.$slidesContainer.style.width = `${this.slides.length * windowWidth}px`;
     }
@@ -105,21 +131,28 @@ class PageSlider {
      * Attach slider events
      */
     private attachEvents(): void {
-        this.moveSlider = this.moveSlider.bind(this);
-        this.redrawSlider = this.redrawSlider.bind(this);
+        this.onScrollFallback = throttle(this.onScroll(), this.options.scrollThrottle);
+        this.onResizeFallback = debounce(this.draw, 200);
 
+        window.addEventListener("scroll", this.onScrollFallback);
+        window.addEventListener("resize", this.onResizeFallback);
+    }
+
+    /**
+     * Trigger some actions on scroll events
+     * @return {Function}
+     */
+    private onScroll(): Function {
         const autoCenter = this.autoCenter();
         const updateSlidesClasses = this.updateSlideClasses();
 
-        window.addEventListener("scroll", throttle(() => {
+        return () => {
             this.moveSlider();
             this.updateData();
 
             updateSlidesClasses();
             autoCenter();
-        }, this.options.scrollThrottle));
-
-        window.addEventListener("resize", throttle(this.redrawSlider, 200));
+        };
     }
 
     /**
@@ -184,15 +217,11 @@ class PageSlider {
     private updateSlideClasses(): Function {
         let currentSlide: HTMLElement = null;
         return () => {
-            if(currentSlide !== this.data.currentSlide){
+            if (currentSlide !== this.data.currentSlide) {
                 this.data.currentSlide.classList.add('active');
             }
             currentSlide = this.data.currentSlide;
         }
-    }
-
-    private redrawSlider(): void {
-        this.draw();
     }
 
     private getDefaultOptions(options: object): PageSliderOptions {
