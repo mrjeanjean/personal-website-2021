@@ -1,3 +1,6 @@
+@use "./../variables" as *;
+@use "./../abstracts/mixins" as *;
+
 // SLIDER WORKS
 //-----------------------------
 $work-button-radius: 15rem;
@@ -72,6 +75,13 @@ $work-button-radius: 15rem;
   pointer-events: all;
 }
 
+@include on-hover(){
+  .slide-works__button:hover + .slide-works__overlay{
+    width: $work-button-radius * 1.4;
+    padding-bottom: $work-button-radius * 1.4;
+  }
+}
+
 .slide__works__wrapper.active .slide-works__overlay{
   width: 200%;
   padding-bottom: 200%;
@@ -88,6 +98,7 @@ $work-button-radius: 15rem;
   @include font-size(18);
   font-family: $font-title;
   margin-bottom: 4rem;
+  color: $color-black;
 }
 
 .slide-works__list{
@@ -107,7 +118,7 @@ $work-button-radius: 15rem;
   text-transform: uppercase;
   margin: 0;
   font-weight: $font-semi-bold;
-  color: $color-theme-pink;
+  color: inherit;
 }
 
 .slide-works-item__title a{
@@ -125,4 +136,23 @@ $work-button-radius: 15rem;
   margin-top: 0;
   line-height: 1.8;
   padding-right: 2rem;
+  color: $color-black;
+}
+
+// PANEL TEXT COLOR
+//-----------------------------
+.slide__works__wrapper[data-panel-color="yellow"]{
+  color: $color-theme-yellow;
+}
+
+.slide__works__wrapper[data-panel-color="pink"]{
+  color: $color-theme-pink;
+}
+
+.slide__works__wrapper[data-panel-color="blue"]{
+  color: $color-theme-blue;
+}
+
+.slide__works__wrapper[data-panel-color="green"]{
+  color: $color-theme-green;
 }

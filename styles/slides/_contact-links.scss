@@ -1,0 +1,74 @@
+@use "./../variables" as *;
+@use "./../abstracts/mixins" as *;
+
+.contact-links{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 0;
+  z-index: 100;
+
+  display: flex;
+  justify-content: center;
+}
+
+.contact-links__item{
+  display: inline-block;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.contact-links__label{
+  display: inline-block;
+  text-decoration: underline;
+  text-underline-offset: 0.1em;
+  transition: transform 300ms $ease-bounce;
+}
+
+.contact-links__item:before{
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 200px;
+  height: 200px;
+  left: 50%;
+  bottom: -10rem;
+  border-radius: 800px;
+  background-color: #fff;
+  z-index: -1;
+  transform: translate(-50%, 4rem) scale(0.6);
+  transition: transform 300ms $ease-in-quart ;
+}
+
+.contact-links__icon{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -2rem);
+  transition: transform 400ms $ease-in-quart, opacity 400ms;
+}
+
+.contact-links__icon img{
+  width: 30px;
+  filter: brightness(0%);
+}
+
+@include on-hover(){
+  .contact-links__item:hover:before{
+    transform: translate(-50%, -5.8rem) scale(1);
+  }
+
+  .contact-links__item:hover .contact-links__label{
+    transform: translateY(-20px);
+    text-decoration: none;
+  }
+
+  .contact-links__item:hover .contact-links__icon{
+    transform: translate(-50%, -3rem);
+    opacity: 1;
+  }
+}

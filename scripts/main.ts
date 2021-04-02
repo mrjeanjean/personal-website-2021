@@ -1,18 +1,18 @@
 import './../styles/main.scss';
 
 import PageSlider from "./page-slider";
+import {PageSliderEventsType} from "./page-slider-events";
 
 // WORKS PANEL
 //-----------------------------
-const worksPanels = document.querySelectorAll(".js-works-panel");
+const $workPanel = document.querySelector(".js-works-panel");
 
-worksPanels.forEach($workPanel => {
-    const $workPanelButton = $workPanel.querySelector(".js-works-panel-button");
+const $workPanelButton = $workPanel.querySelector(".js-works-panel-button");
 
-    $workPanelButton.addEventListener("click", () => {
-        $workPanel.classList.toggle("active");
-    })
-});
+$workPanelButton.addEventListener("click", () => {
+    $workPanel.classList.toggle("active");
+})
+
 
 // HORIZONTAL SLIDER
 //-----------------------------
@@ -22,12 +22,19 @@ if ($slidersContainer) {
         multiplier: 1
     });
 
-    document.addEventListener('keydown', (e)=>{
-        if(e.key === 'ArrowLeft'){
+    pageSlider.events.add(PageSliderEventsType.updated, (data: any) => {
+        const currentColor = data.currentSlide.dataset.slideColor;
+        if(currentColor){
+            $workPanel.setAttribute("data-panel-color", currentColor);
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
             pageSlider.previous();
         }
 
-        if(e.key === 'ArrowRight'){
+        if (e.key === 'ArrowRight') {
             pageSlider.next();
         }
     });

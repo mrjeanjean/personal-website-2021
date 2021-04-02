@@ -11,8 +11,34 @@
 </head>
 <body>
 <div class="page-slider js-page-slider">
+    <!-- SLIDER HOME -->
+    <section class="slide slide--home" data-slide-color="yellow">
+        <div class="slide__inner">
+            <div class="slide--home__avatar">
+                <img src="images/me.jpg" alt="Me" class="">
+            </div>
+            <div>
+                <h1 class="slide__title">Gaëtan Chesneau <small>Développeur full-stack et formateur développeur
+                    web</small></h1>
+                <div class="slide__content--home">
+                    <div>
+                        <p><strong>Basé à Lille</strong>, je suis <strong>développeur front-end et back-end</strong> depuis plus de 15
+                            ans. J'ai travaillé près de 6 ans dans divers agences de communication. Je travaille en freelance
+                            depuis 10 ans maintenant et la majorité du temps pour des agences sur divers types de
+                            projets.</p>
+                        <p>J'ai travaillé comme <strong>formateur</strong> (développeur web JS/PHP) pour l'école numérique 3W Academy. Je
+                            suis disponible pour renouveler l'expérience au sein d'une école ou d'un organisme de
+                            formation à distance ou dans la métropole lilloise.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- #SLIDER HOME -->
+
+
     <!-- SLIDER FRONT-END -->
-    <section class="slide slide--pink">
+    <section class="slide" data-slide-color="pink">
         <div class="slide__inner">
             <h1 class="slide__title">Intégrateur <small>Développeur front-end senior css et javascript</small></h1>
             <div class="slide__content">
@@ -74,7 +100,7 @@
     <!-- #SLIDER FRONT-END -->
 
     <!-- SLIDER BACK-END -->
-    <section class="slide slide--blue">
+    <section class="slide" data-slide-color="blue">
         <div class="slide__inner">
             <h1 class="slide__title">Développeur <small>Développeur back-end senior php</small></h1>
             <div class="slide__content">
@@ -124,57 +150,7 @@
     <!-- #SLIDER BACK-END -->
 
     <!-- SLIDER OTHER -->
-    <section class="slide slide--green">
-        <div class="slide__inner">
-            <h1 class="slide__title">Développeur <small>Développeur back-end senior php</small></h1>
-            <div class="slide__content">
-                <div class="slide__item">
-                    <h2 class="slide__subtitle">CSS // SCSS</h2>
-                    <div class="slide-content__text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad ducimus et inventore maxime nam,
-                        natus
-                        qui ratione recusandae repellat saepe. Alias eos mollitia nam neque nobis quaerat quas sit
-                        voluptas?
-                    </div>
-                </div>
-                <div class="slide__item">
-                    <h2 class="slide__subtitle">React JS</h2>
-                    <div class="slide-content__text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad ducimus et inventore maxime nam,
-                        natus
-                        qui nventore maxime nam, natus qui ratione recusandae repellat saepe. Alias eos mollitia nam
-                        neque
-                        nobis quaerat quas sit voluptas?
-                        Alias eos mollitia nam neque nobis quaerat quas sit voluptas?
-                    </div>
-                </div>
-                <div class="slide__item">
-                    <h2 class="slide__subtitle">Vanilla javascript</h2>
-                    <div class="slide-content__text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad ducimus et inventore maxime nam,
-                        natus
-                        qui ratione recusandae repellat saepe. Alias eos mollitia nam neque nobis quaerat quas sit
-                        voluptas?
-                    </div>
-                </div>
-                <div class="slide__item">
-                    <h2 class="slide__subtitle">Vue JS</h2>
-                    <div class="slide-content__text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad ducimus et inventore maxime nam,
-                        natus
-                        qui nventore maxime nam, natus qui ratione recusandae repellat saepe. Alias eos mollitia nam
-                        neque
-                        nobis quaerat quas sit voluptas?
-                        Alias eos mollitia nam neque nobis quaerat quas sit voluptas?
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- #SLIDER OTHER -->
-
-    <!-- SLIDER OTHER -->
-    <section class="slide slide--yellow">
+    <section class="slide" data-slide-color="green">
         <div class="slide__inner">
             <h1 class="slide__title">Développeur <small>Développeur back-end senior php</small></h1>
             <div class="slide__content">
@@ -251,11 +227,28 @@
         </div>
     </div>
     <button type="button" class="slide-works__button js-works-panel-button">
-        <img src="images/icon-close.svg" alt="">
+        <img src="images/icon-close.svg" alt="Voir réalisations">
     </button>
     <div class="slide-works__overlay"></div>
 </div>
 <!-- #WORKS POPUP -->
+
+<!-- CONTACT LINKS -->
+<div class="contact-links">
+    <a href="#" target="_blank" class="contact-links__item">
+        <span class="contact-links__label">gaetan@moveo.fr</span>
+        <span class="contact-links__icon"><img src="images/logo-mail.svg" alt="Envoyer un email"></span>
+    </a>
+    <a href="https://bitbucket.org/mrjeanjean/" target="_blank" class="contact-links__item">
+        <span class="contact-links__label">dépôt git</span>
+        <span class="contact-links__icon"><img src="images/logo-github.svg" alt="Depôt GIT"></span>
+    </a>
+    <a href="https://twitter.com/moveowebdesign" class="contact-links__item" target="_blank">
+        <span class="contact-links__label">@moveowebdesign</span>
+        <span class="contact-links__icon"><img src="images/logo-twitter.svg" alt="Twitter"></span>
+    </a>
+</div>
+<!-- #CONTACT LINKS -->
 <script type="module" src="/scripts/main.ts" defer></script>
 </body>
 </html>

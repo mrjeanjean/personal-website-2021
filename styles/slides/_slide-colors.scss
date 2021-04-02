@@ -1,45 +1,49 @@
+@use "./../variables" as *;
+
 // SLIDES COLORS
 //-----------------------------
-.slide--pink{
+.slide[data-slide-color="pink"]{
   background-color: $color-theme-pink;
   *::selection{
     background-color: $color-theme-green;
   }
 }
 
-.slide--green{
+.slide[data-slide-color="green"]{
   background-color: $color-theme-green;
   *::selection{
     background-color: $color-theme-pink;
   }
 }
 
-.slide--yellow{
+.slide[data-slide-color="yellow"]{
   background-color: $color-theme-yellow;
   *::selection{
     background-color: $color-theme-blue;
   }
 }
 
-.slide--blue{
+.slide[data-slide-color="blue"]{
   background-color: $color-theme-blue;
   *::selection{
     background-color: $color-theme-yellow;
   }
 }
 
-.slide--pink .slide-works-item__title{
+// MAIN TITLES
+//-----------------------------
+.slide[data-slide-color="pink"] .slide-works-item__title{
   color: $color-theme-pink;
 }
 
-.slide--green .slide-works-item__title{
+.slide[data-slide-color="green"] .slide-works-item__title{
   color: $color-theme-green;
 }
 
-.slide--yellow .slide-works-item__title{
+.slide[data-slide-color="yellow"] .slide-works-item__title{
   color: $color-theme-yellow;
 }
 
-.slide--blue .slide-works-item__title{
+.slide[data-slide-color="blue"] .slide-works-item__title{
   color: $color-theme-blue;
 }

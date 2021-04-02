@@ -1,4 +1,5 @@
 import {debounce, throttle, unwrapElement, wrapElement} from "./helpers";
+import PageSliderEvents, {PageSliderEventsType} from "./page-slider-events";
 
 /**
  * Page slider options
@@ -13,7 +14,6 @@ interface PageSliderOptions {
     autoCenter?: boolean,
     autoCenterDelay?: number
 }
-
 
 /**
  * Representing current Page Slider state
@@ -44,6 +44,8 @@ class PageSlider {
     onScrollFallback: any;
     onResizeFallback: any;
 
+    events: PageSliderEvents;
+
     /**
      * @constructor
      * @param {HTMLElement} slideContainer
@@ -51,6 +53,8 @@ class PageSlider {
      */
     public constructor(slideContainer: HTMLElement, options: PageSliderOptions = null) {
         this.options = this.getDefaultOptions(options);
+
+        this.events = new PageSliderEvents();
 
         this.$slidesContainer = slideContainer;
         this.$pageSliderWrapper = this.generateWrapper();
@@ -113,6 +117,10 @@ class PageSlider {
         window.removeEventListener("scroll", this.onScrollFallback);
         window.removeEventListener("resize", this.onResizeFallback);
 
+        this.slides.forEach($slide => {
+            $slide.style.width = null;
+        });
+
         // Remove slide container css rules
         this.$slidesContainer.style.display = null;
         this.$slidesContainer.style.width = null;
@@ -148,6 +156,10 @@ class PageSlider {
     private draw(): void {
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
+
+        this.slides.forEach($slide => {
+            $slide.style.width = `${windowWidth}px`;
+        });
 
         document.body.style.overflowX = 'hidden';
         document.body.style.height = `${this.slides.length * this.options.multiplier * windowHeight}px`;
@@ -217,6 +229,8 @@ class PageSlider {
             currentSlide,
             distanceToNextSlide
         }
+
+        this.events.fire(PageSliderEventsType.updated, this.data);
     }
 
     /**
