@@ -28,7 +28,7 @@
   margin-top: -4rem;
   margin-bottom: 4rem;
   position: relative;
-  margin-left: -2.5rem;
+  margin-left: -4rem;
 }
 
 .slide__title small{
@@ -39,7 +39,7 @@
   font-weight: $font-semi-bold;
   left: 0;
   color: $color-black;
-  transform: translate(2.5rem, -0.8rem);
+  transform: translate(4rem, -0.8rem);
   letter-spacing: 1px;
 }
 
@@ -88,7 +88,16 @@
 // RESPONSIVE
 //-----------------------------
 @include down(1200){
-  .slide{
-    padding: 4rem 4rem 4rem 6rem;
+  %slide{
+    padding: 4rem 4rem 4rem 4rem;
+  }
+
+  .slide__title{
+    margin-left: -2rem;
+    margin-bottom: 2rem;
+  }
+
+  .slide__title small{
+    transform: translate(2rem, -0.8rem);
   }
 }

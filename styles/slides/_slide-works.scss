@@ -1,9 +1,9 @@
 // SLIDER WORKS
 //-----------------------------
-$work-button-radius: 20rem;
+$work-button-radius: 15rem;
 
 .slide-works__button{
-  position: absolute;
+  position: fixed;
   z-index: 40;
   top: 0;
   right: 0;
@@ -34,7 +34,7 @@ $work-button-radius: 20rem;
 }
 
 .slide-works__overlay{
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   z-index: 8;
@@ -50,18 +50,18 @@ $work-button-radius: 20rem;
 }
 
 .slide__works{
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
-  left: 50%;
+  left: 0;
   z-index: 10;
   opacity: 0;
   display: flex;
   align-items: center;
+  pointer-events: none;
 
   @extend %slide;
-  padding-left: 2rem;
   transition: opacity 200ms 1s;
   transition-delay: 0s;
 }
@@ -69,11 +69,12 @@ $work-button-radius: 20rem;
 .slide__works__wrapper.active .slide__works{
   opacity: 1;
   transition-delay: 0.10s;
+  pointer-events: all;
 }
 
 .slide__works__wrapper.active .slide-works__overlay{
-  width: 120%;
-  padding-bottom: 120%;
+  width: 200%;
+  padding-bottom: 200%;
 }
 
 .slide__works__wrapper.active .slide-works__button img{
@@ -93,10 +94,11 @@ $work-button-radius: 20rem;
   list-style: none;
   margin: 0;
   padding: 0;
-}
 
-.slide-works__item + .slide-works__item{
-  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 4rem;
+  grid-row-gap: 2rem;
 }
 
 .slide-works-item__title{
@@ -105,6 +107,7 @@ $work-button-radius: 20rem;
   text-transform: uppercase;
   margin: 0;
   font-weight: $font-semi-bold;
+  color: $color-theme-pink;
 }
 
 .slide-works-item__title a{
@@ -121,4 +124,5 @@ $work-button-radius: 20rem;
 .slide-works-item__content{
   margin-top: 0;
   line-height: 1.8;
+  padding-right: 2rem;
 }

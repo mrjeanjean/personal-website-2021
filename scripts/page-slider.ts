@@ -70,7 +70,6 @@ class PageSlider {
 
         this.draw();
         this.attachEvents();
-        this.onScroll();
     }
 
     /**
@@ -241,7 +240,7 @@ class PageSlider {
     }
 
     /**
-     * Add css class on currently revealed slide
+     * Change css classes on currently revealed slide
      * @return {Function} - Callback as closure
      */
     private updateSlideClasses(): Function {
