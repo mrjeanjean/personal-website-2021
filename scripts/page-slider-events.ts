@@ -3,26 +3,22 @@ export enum PageSliderEventsType{
     updated
 }
 
-interface PageSliderEventsItem{
-    type: PageSliderEventsType
-    callback: Function,
+interface PageSliderObserver{
+    type: PageSliderEventsType,
+    callback: Function
 }
 
 /**
  * Class representing events fired by PageSlider
  */
 class PageSliderEvents{
-    observers: Array<PageSliderEventsItem>;
+    observers: Array<PageSliderObserver>;
 
     public constructor() {
-        this.observers = new Array<PageSliderEventsItem>();
+        this.observers = new Array<PageSliderObserver>();
     }
 
-    /**
-     * @param {PageSliderEventsType} type
-     * @param {Function} callback
-     */
-    public add(type:PageSliderEventsType, callback: Function){
+    public add(type: PageSliderEventsType, callback: Function){
         this.observers.push({
             type,
             callback

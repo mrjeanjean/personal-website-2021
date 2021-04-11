@@ -2,6 +2,7 @@ import './../styles/main.scss';
 
 import PageSlider from "./page-slider";
 import {PageSliderEventsType} from "./page-slider-events";
+import {clamp, clampDistance, lerp} from "./helpers";
 
 // WORKS PANEL
 //-----------------------------
@@ -17,25 +18,23 @@ $workPanelButton.addEventListener("click", () => {
 // HORIZONTAL SLIDER
 //-----------------------------
 const $slidersContainer = document.querySelector(".js-page-slider") as HTMLElement;
-if ($slidersContainer) {
-    let pageSlider = new PageSlider($slidersContainer, {
-        multiplier: 1
-    });
+let pageSlider = new PageSlider($slidersContainer, {
+    multiplier: 1
+});
 
-    pageSlider.events.add(PageSliderEventsType.updated, (data: any) => {
-        const currentColor = data.currentSlide.dataset.slideColor;
-        if(currentColor){
-            $workPanel.setAttribute("data-panel-color", currentColor);
-        }
-    });
+pageSlider.events.add(PageSliderEventsType.updated, (data: any) => {
+    const currentColor = data.currentSlide.dataset.slideColor;
+    if (currentColor) {
+        $workPanel.setAttribute("data-panel-color", currentColor);
+    }
+});
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            pageSlider.previous();
-        }
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+        pageSlider.previous();
+    }
 
-        if (e.key === 'ArrowRight') {
-            pageSlider.next();
-        }
-    });
-}
+    if (e.key === 'ArrowRight') {
+        pageSlider.next();
+    }
+});

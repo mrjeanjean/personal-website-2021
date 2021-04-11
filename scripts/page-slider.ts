@@ -74,6 +74,9 @@ class PageSlider {
 
         this.draw();
         this.attachEvents();
+
+        this.onScrollFallback();
+
     }
 
     /**

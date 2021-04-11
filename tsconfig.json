@@ -1,4 +1,7 @@
 {
     "include": ["scripts/**/*"],
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules"],
+    "compilerOptions": {
+        "target": "es6"
+    }
 }
