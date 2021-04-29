@@ -45,6 +45,7 @@ class PageSlider {
     onResizeFallback: any;
 
     events: PageSliderEvents;
+    isCleared: boolean = false;
 
     /**
      * @constructor
@@ -59,6 +60,7 @@ class PageSlider {
         this.$slidesContainer = slideContainer;
         this.$pageSliderWrapper = this.generateWrapper();
         this.slides = this.$slidesContainer.querySelectorAll(".slide");
+        document.body.classList.add('page-slider-active');
 
         this.onScroll = this.onScroll.bind(this);
         this.moveSlider = this.moveSlider.bind(this);
@@ -99,9 +101,9 @@ class PageSlider {
     /**
      * Move slider to the next slide
      */
-    public next(){
+    public next() {
         const nextIndex = this.data.currentIndex + 1;
-        if( nextIndex < this.slides.length){
+        if (nextIndex < this.slides.length) {
             this.goToSlide(nextIndex);
         }
     }
@@ -109,16 +111,23 @@ class PageSlider {
     /**
      * Move slider to the previous slide
      */
-    public previous(){
+    public previous() {
         const prevIndex = this.data.currentIndex - 1;
-        if( prevIndex >= 0){
+        if (prevIndex >= 0) {
             this.goToSlide(prevIndex);
         }
     }
 
     public clear(): void {
+        if (this.isCleared) {
+            return;
+        }
+
+        this.isCleared = true;
+
         window.removeEventListener("scroll", this.onScrollFallback);
         window.removeEventListener("resize", this.onResizeFallback);
+        document.removeEventListener('keyup', this.onKeyUp);
 
         this.slides.forEach($slide => {
             $slide.style.width = null;
@@ -127,6 +136,7 @@ class PageSlider {
         // Remove slide container css rules
         this.$slidesContainer.style.display = null;
         this.$slidesContainer.style.width = null;
+        document.body.classList.remove('page-slider-active');
 
         // Remove body css rules
         document.body.style.overflowX = null;
@@ -157,6 +167,10 @@ class PageSlider {
      * Set slider wrapper height based on window height and multiplier
      */
     private draw(): void {
+        if (this.isCleared) {
+            return;
+        }
+
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
 
@@ -177,9 +191,12 @@ class PageSlider {
     private attachEvents(): void {
         this.onScrollFallback = throttle(this.onScroll(), this.options.scrollThrottle);
         this.onResizeFallback = debounce(this.draw, 200);
+        this.onKeyUp = this.onKeyUp.bind(this);
 
         window.addEventListener("scroll", this.onScrollFallback);
         window.addEventListener("resize", this.onResizeFallback);
+
+        document.addEventListener('keyup', this.onKeyUp);
     }
 
     /**
@@ -213,6 +230,19 @@ class PageSlider {
         this.data = {
             ...this.data,
             leftIndent
+        }
+    }
+
+    /**
+     * Allowed keyboard navigation with left and right keys
+     */
+    private onKeyUp(e: KeyboardEvent) {
+        if (e.key === 'ArrowLeft') {
+            this.previous();
+        }
+
+        if (e.key === 'ArrowRight') {
+            this.next();
         }
     }
 

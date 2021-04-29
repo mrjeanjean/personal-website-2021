@@ -72,3 +72,29 @@
     opacity: 1;
   }
 }
+
+// RULES IF SLIDER IS DISABLED
+//-----------------------------
+body:not(.page-slider-active){
+  .contact-links__label{
+    display: none;
+  }
+
+  .contact-links__icon{
+    opacity: 1;
+    position: static;
+    display: inline-block;
+    transform: none;
+  }
+
+  .contact-links__item:before{
+    transform: translateX(-50%) translateY(-10px);
+    height: 50px;
+    width: 50px;
+    bottom: auto;
+  }
+
+  .contact-links__item:hover .contact-links__icon{
+    transform: scale(0.8);
+  }
+}

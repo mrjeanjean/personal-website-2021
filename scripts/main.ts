@@ -2,7 +2,7 @@ import './../styles/main.scss';
 
 import PageSlider from "./page-slider";
 import {PageSliderEventsType} from "./page-slider-events";
-import {reverseString} from "./helpers";
+import {reverseString, throttle} from "./helpers";
 
 /**
  * Works panel
@@ -14,6 +14,7 @@ const $workPanelButton = $workPanel.querySelector(".js-works-panel-button");
 
 $workPanelButton.addEventListener("click", () => {
     $workPanel.classList.toggle("active");
+    document.body.classList.toggle("work-panel-active");
 })
 
 
@@ -21,38 +22,46 @@ $workPanelButton.addEventListener("click", () => {
  * Horizontal slider instance and configuration
  */
 const $slidersContainer = document.querySelector(".js-page-slider") as HTMLElement;
-let pageSlider = new PageSlider($slidersContainer, {
-    multiplier: 1
-});
+let pageSlider = buildPageSlider();
 
-pageSlider.events.add(PageSliderEventsType.updated, (data: any) => {
-    const currentColor = data.currentSlide.dataset.slideColor;
-    if (currentColor) {
-        $workPanel.setAttribute("data-panel-color", currentColor);
-    }
-});
+function buildPageSlider():PageSlider{
+    let pageSlider = new PageSlider($slidersContainer, {
+        multiplier: 1
+    });
 
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') {
-        pageSlider.previous();
-    }
+    pageSlider.events.add(PageSliderEventsType.updated, (data: any) => {
+        const currentColor = data.currentSlide.dataset.slideColor;
+        if (currentColor) {
+            $workPanel.setAttribute("data-panel-color", currentColor);
+        }
+    });
 
-    if (e.key === 'ArrowRight') {
-        pageSlider.next();
-    }
-});
+    return pageSlider;
+}
+
 
 /**
- * Basic email obfuscation using hashing array
+ * Responsive rules
  */
-const em = [
-    "ag",
-    "te",
-    "na",
-    "@",
-    "vom",
-    "oe",
-];
+function detectDevice(){
+    if( window.innerWidth < 1200){
+        pageSlider?.clear();
+        pageSlider = null;
+        return;
+    }
+
+    if(!pageSlider){
+        pageSlider = buildPageSlider();
+    }
+}
+
+window.addEventListener('resize', throttle(detectDevice, 300));
+window.addEventListener('load', detectDevice);
+
+/**
+ * Cheap email obfuscation using hashing array
+ */
+const em = ["ag", "te", "na", "@", "vom", "oe"];
 const $emailTarget = document.querySelector(".js-email-helper") as HTMLLinkElement;
 if ($emailTarget) {
 

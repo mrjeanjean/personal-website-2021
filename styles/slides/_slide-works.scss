@@ -65,9 +65,12 @@ $work-button-radius: 15rem;
   align-items: center;
   pointer-events: none;
 
-  @extend %slide;
   transition: opacity 200ms 1s;
   transition-delay: 0s;
+}
+
+.slide__works__inner{
+  @extend .slide__inner;
 }
 
 .slide__works__wrapper.active .slide__works{

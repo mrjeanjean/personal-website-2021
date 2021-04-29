@@ -12,12 +12,16 @@ $root-sizes: (
   font-size: map-get($root-sizes, $size) / 16 * 100%;
 }
 
-@mixin font-size($fontsize) {
-  // NICE FOR FONT SIZE 18 : #{$fontsize * 0.85 / $default-font-size}rem, 1.1vw, #{$fontsize / $default-font-size}rem
+@mixin font-size($fontsize, $clamp:true) {
   $raw_size: strip-unit($fontsize);
-  font-size: clamp(
-          #{$fontsize * 0.85 / $default-font-size}rem, #{(1.1vw / 18 * $raw_size)}, #{$fontsize / $default-font-size}rem
-  );
+  @if $clamp {
+    font-size: clamp(
+            #{$fontsize * 0.85 / $default-font-size}rem, #{(1.1vw / 18 * $raw_size)}, #{$fontsize / $default-font-size}rem
+    );
+  } @else {
+    font-size: #{$fontsize / $default-font-size}rem;
+  }
+
 }
 
 $min-font-size: 14;
@@ -54,14 +58,10 @@ $min-font-size: 14;
   $size: strip-unit($size);
   @media (min-width: $size * 1px) { @content; }
 }
+
 @mixin down($size) {
   $size: strip-unit($size);
   @media (max-width: $size * 1px) { @content; }
-}
-@mixin between($down, $up) {
-  $down: strip-unit($down);
-  $up: strip-unit($up);
-  @media (min-width: $down * 1px) and (max-width: $up * 1px) { @content; }
 }
 
 // HELPERS

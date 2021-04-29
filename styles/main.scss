@@ -6,6 +6,7 @@
 *:before,
 *:after {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -22,3 +23,5 @@ body{
 @import "./slides/slide-colors";
 @import "./slides/slide-animations";
 @import "./slides/contact-links";
+
+@import "./slides/slide-responsive";
