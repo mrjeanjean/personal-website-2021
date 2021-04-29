@@ -86,3 +86,13 @@ export function lerp(start: number, end: number, amount: number): number {
     return (1 - amount) * start + amount * end;
 }
 
+/**
+ * Simple reverse string function
+ * @param str
+ * @return {string}
+ */
+export function reverseString(str):string {
+    let splitString = str.split("");
+    let reverseArray = splitString.reverse();
+    return reverseArray.join("");
+}
