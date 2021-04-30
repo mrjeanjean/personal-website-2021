@@ -125,6 +125,7 @@ class PageSlider {
 
         this.isCleared = true;
 
+        // Remove event listeners
         window.removeEventListener("scroll", this.onScrollFallback);
         window.removeEventListener("resize", this.onResizeFallback);
         document.removeEventListener('keyup', this.onKeyUp);

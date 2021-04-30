@@ -1,0 +1,33 @@
+@use './../variables' as *;
+@use './../abstracts/mixins' as *;
+
+.page-error{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+  text-align: center;
+  background-color: $color-theme-yellow;
+}
+
+.page-error__title{
+  text-transform: uppercase;
+  margin-top: 0;
+}
+
+.page-error__title span{
+  @include font-size(120);
+  display: block;
+  color: #ffffff;
+  font-weight: $font-light;
+  line-height: 1;
+  margin-top: -2rem;
+}
+
+@include down(550) {
+  .page-error__title span {
+    @include font-size(90, false);
+  }
+}

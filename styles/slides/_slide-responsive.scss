@@ -37,9 +37,11 @@
     padding-bottom: 12rem;
   }
 
-  .slide-works__button:hover + .slide-works__overlay {
-    width: 15rem;
-    padding-bottom: 15rem;
+  @include on-hover(){
+    .slide-works__button:hover + .slide-works__overlay {
+      width: 15rem;
+      padding-bottom: 15rem;
+    }
   }
 
   .slide-works__button img {
@@ -181,9 +183,11 @@
     padding-bottom: 6rem;
   }
 
-  .slide-works__button:hover + .slide-works__overlay {
-    width: 8rem;
-    padding-bottom: 8rem;
+  @include on-hover() {
+    .slide-works__button:hover + .slide-works__overlay {
+      width: 8rem;
+      padding-bottom: 8rem;
+    }
   }
 
   .slide-works__button{
