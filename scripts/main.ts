@@ -79,3 +79,24 @@ if ($emailTarget) {
 }
 
 
+/**
+ * Display bottom links after all initialization
+ */
+const $contactLinks = document.querySelector(".js-contact-links") as HTMLElement;
+setTimeout(()=>{
+    $contactLinks.classList.add("active");
+}, 800);
+
+
+/**
+ * Lazy avatar image loading
+ * Just to prevent Google Image indexation
+ */
+const $avatarImage = document.querySelector(".js-avatar-image") as HTMLImageElement;
+if($avatarImage){
+    setTimeout(()=>{
+        $avatarImage.src = $avatarImage.dataset.src;
+    }, 200);
+}
+
+

@@ -8,9 +8,14 @@
   right: 0;
   padding-bottom: 0;
   z-index: 100;
-
   display: flex;
   justify-content: center;
+  transform: translateY(180%);
+}
+
+.contact-links.active{
+  transform: translateY(0);
+  transition: transform 800ms $ease-bounce;
 }
 
 .contact-links__item{
